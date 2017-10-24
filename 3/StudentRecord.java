@@ -33,6 +33,16 @@ public class StudentRecord {
         }
     }
 
+    public StudentRecord(ResultSet rs) {
+        try {
+            name = rs.getString("name");
+            roll = rs.getInt("roll");
+            dpt = rs.getString("dpt");
+            m = rs.getInt("m");
+        } catch(Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
 
         StudentRecord tt = new StudentRecord();
@@ -103,11 +113,7 @@ public class StudentRecord {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next())
             {
-                StudentRecord st = new StudentRecord();
-                st.name = rs.getString("name");
-                st.roll = rs.getInt("roll");
-                st.dpt = rs.getString("dpt");
-                st.m = rs.getInt("m");
+                StudentRecord st = new StudentRecord(rs);
                 st.print();
             }
         } catch(Exception e) {
@@ -121,11 +127,7 @@ public class StudentRecord {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next())
             {
-                StudentRecord st = new StudentRecord();
-                st.name = rs.getString("name");
-                st.roll = rs.getInt("roll");
-                st.dpt = rs.getString("dpt");
-                st.m = rs.getInt("m");
+                StudentRecord st = new StudentRecord(rs);
                 st.print();
             }
         } catch(Exception e) {
